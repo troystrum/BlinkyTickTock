@@ -1,6 +1,6 @@
 // Dat Phan dat.hy.phan@gmail.com
 
-// BlinkyShimmer - Aesthetically-pleasing random blinking
+// BlinkyShimmer - An aesthetically-pleasing random blinking animation for BlinkyTape
 
 // My goal was to capture the shimmering effect of light reflecting
 // off the top of waves in a body of water
