@@ -1,4 +1,4 @@
 BlinkyShimmer
 =============
 
-BlinkyShimmer - Aesthetically-pleasing random blinking
+BlinkyShimmer - An aesthetically-pleasing random blinking animation for BlinkyTape
