@@ -1,3 +1,5 @@
+// Taken from BlinkinLabs
+
 // TODO: Make this threaded! We can't hit high framerates otherwise :-(
 
 class BlinkyTape
