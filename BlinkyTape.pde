@@ -1,4 +1,4 @@
-// Taken from BlinkinLabs
+// This BlinkyTape class is taken from BlinkinLabs
 
 // TODO: Make this threaded! We can't hit high framerates otherwise :-(
 
