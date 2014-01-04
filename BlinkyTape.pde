@@ -5,7 +5,7 @@
 class BlinkyTape
 {
   private String m_portName;  // TODO: How to request cu.* devices?
-  Serial m_outPort;
+  private Serial m_outPort;
 
   private int m_numberOfLEDs;
   
