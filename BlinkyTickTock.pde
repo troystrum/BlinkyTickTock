@@ -28,6 +28,8 @@ void setup() {
 
   for (String p : Serial.list()) {
 
+	// Set your serial port here:
+	//
     if (p.startsWith("COM31")) {
 
       bt = new BlinkyTape(this, p, 60);
@@ -46,7 +48,7 @@ void colorSetup() {
   randcolor1_g = random(255);
   randcolor1_b = random(255);
 
-  // Rotate the color wheel in a random direction:
+  // Rotate the colour wheel in a random direction:
   //
   if (random(1) <= 0.5) {
     
@@ -72,7 +74,7 @@ void serialEvent(Serial m_outPort) {
   
   val = m_outPort.read();
 
-  // It seems that it always shows 15 until the button is pushed.
+  // It seems that it always shows 15 until the button is pushed, when it seems to be 7:
   //
   if (val != 15) colorSetup();
   
@@ -82,8 +84,12 @@ void draw() {
 
   if (bt != null) {
 
+	// We'll go 1 to 60 to use all the lights instead of 0 to 59. :)
+	//
     int current_second = second()+1;
 
+	// "reset" logic keeps the first LED from cycling more than once during the first second of the minute.
+	//
     if (current_second <= 1 && reset == false) {
       
       colorSetup();
@@ -99,16 +105,26 @@ void draw() {
 
       if (frame < current_second) {
 
+		/* 
+		The idea here is that we're calculating the crossfade between two numbers in the range of 0-255, either up or down.
+		We're calculating a percentage of the color_trans (difference) number for each frame.
+		If we're going down, the number will be negative.  Up will be positive.
+		The effect is two fixed colours moving farther apart, with the gradient being calculated between them at each step.
+		The first and last colour should stay the same in every frame. Subtle but pleasant.
+		*/
+		
         gradient_r = (frame / current_second) * color_trans_r;
         gradient_g = (frame / current_second) * color_trans_g;
         gradient_b = (frame / current_second) * color_trans_b;
-     
+
         color c = color(randcolor1_r+gradient_r, randcolor1_g+gradient_g, randcolor1_b+gradient_b);
         
         bt.pushPixel(c);
         
       }  else {
 
+		// blank out other pixels:
+		//
         color c = color(0, 0, 0);
         
         bt.pushPixel(c);
